@@ -1,0 +1,209 @@
+<html>
+
+<head>
+
+	<style>
+	
+		h1 {text-align:center; font-family:"Century Schoolbook"; font-size:22px;}
+		h2 {font-family:"Century Schoolbook"; font-size:20px;}
+		h3 {font-family:"Century Schoolbook"; font-size:18px;}
+		p {font-family:"Times New Roman"; font-size:14px;}
+		li {font-family:"Times New Roman"; font-size:14px;}
+	
+	</style>
+
+
+</head>
+
+<body>
+
+<h1><u>Overview</u></h1>
+
+<p>
+This program is a game of Chess coded in the Java language. It features a fully interactable GUI to allow play<br>
+between two people. Improvements/additions are being made on a regular basis to enhance the user experience.<br> 
+This page offers a rudimentary background and explains the rules of the game. Click the 'Back' button if you<br>
+wish to return to the Welcome screen or the 'Play' button if you wish to begin a new game, both are located<br>
+at the bottom of this screen.<br>   
+</p>
+
+<br>
+
+<h1><u>How to Play</u></h1><br>
+
+<h2><u>Interacting with the GUI</u></h2>
+
+<p>
+Clicking the 'Play' button on this page or the Welcome page will take you to the game screen<br>
+which displays the chess board and pieces. The label in the top right of the screen will display the<br>
+current player's turn (White or Black) and the label directly below will display the current player's<br>
+piece selection, if the label is blank then no piece has been selected. The current player can select<br>
+the piece they wish to move by clicking on it, if it appears in the piece selection label then the<br>
+selection has been registered.<br>
+<br>
+With a selected piece, the current player may move it by clicking on the square of the board they<br>
+wish to move it to. If the move is valid then the piece will be relocated to that square and <br>
+the player's turn ends. If, before making a valid move, a player wishes to cancel their<br>
+choice of piece to move then they may click the currently selected piece and the selection icon<br>
+will go blank allowing the player to choose another piece.<br> 
+Play will continue until one of three conditions is met discussed in the next section 'Ending the Game'.<br>
+<br>
+The player controlling white pieces always has the first move and each player must on their turn make a<br>
+valid move until play ends.<br>
+Any move which puts a player's King in danger is deemed illegal.<br>
+</p>
+
+<br>
+<br>
+
+<h2><u>Ending the Game</u></h2>
+	
+<p>	
+The game can end in three different ways:
+<ul>
+<li>Win/Lose</li>
+<li>Stalemate</li>
+<li>Quit/Resignation</li>
+</ul> 
+</p>
+
+<br>
+
+<h3><u>Win/Lose</u></h3>
+		
+<p>		
+Either player may win the game by placing the other player's King in Checkmate.<br> 
+This is when a player is in Check and no move on that player's turn allows them to escape Check.<br>
+</p>
+
+<br>
+
+<h3><u>Stalemate</u></h3>
+
+<p>
+Stalemate occurs when the player whose turn it is to move is not in Check but every possible move<br> 
+places them in Check.<br>
+</p>
+
+<br>
+
+<h3><u>Quit/Resignation</u></h3>
+
+<p>
+Either player may end the game by clicking on the 'Quit' button located on the bottom right of the<br>
+game screen. They may also end the program by exiting the graphical window containing the game screen.<br>
+</p>
+
+<br>
+<br>
+
+<h1><u>Pieces and Moves</u></h1>
+
+<h2><u>Pieces</u></h2>
+
+<h3><u>Pawn</u></h3>
+
+<p>
+The Pawn may move 1 square directly in front of it towards the opposing player's side provided it is<br> 
+unoccupied, a Pawn may not move backwards. On its first move only the Pawn may move 2 squares forward<br> 
+provided both squares are unoccupied. Pawns may capture enemy pieces that are 1 square diagonally in front<br> 
+of them. Pawns can perform 1 of 2 special moves: En-Passant and Promotion.<br>  
+</p>
+
+<br>
+
+<h3><u>Rook</u></h3>
+
+<p>
+The Rook may move any number of squares along the same row or column but cannot jump over other pieces.<br>
+The Rook can perform the Castling move along with the King.<br>
+</p>
+
+<br>
+
+<h3><u>Knight</u></h3>
+
+<p>
+The Knight moves in an 'L' shape: 2 squares vertically and 1 square horizontally or 2 squares horizontally<br> 
+and 1 square vertically. The Knight is allowed to jump over other pieces.<br>
+</p>
+
+<br>
+
+<h3><u>Bishop</u></h3>
+
+<p>
+The Bishop may move any number of squares diagonally but cannot jump over other pieces.<br>
+</p>
+
+<br>
+
+<h3><u>Queen</u></h3>
+
+<p>
+The Queen may move any number of squares along the same row, column, or diagonal.<br> 
+Thus the Queen combines the movement of the Rook and Bishop.<br>
+</p>
+
+<br>
+
+<h3><u>King</u></h3>
+
+<p>
+The King can move 1 square in any direction. The King may perform the Castling move with the Rook.<br>
+</p>
+
+<br>
+<br>
+
+<h2><u>Moves</u></h2>
+
+<h3><u>En-Passant</u></h3>
+
+<p>
+If player A's Pawn moves 2 squares on its first move and player B's Pawn is directly adjacent on<br> 
+the horizontal then B's Pawn may capture A's Pawn En-Passant (In Passing) where B moves to the<br> 
+very last square A passed over. B must do this on the turn directly after A and A must have double jumped<br> 
+otherwise it is deemed illegal. Player B would select their Pawn and click the last square that A's Pawn<br> 
+passed over.<br> 
+</p>
+
+<br>
+
+<h3><u>Promotion</u></h3>
+
+<p>
+If a Pawn moves onto 1 of the squares on the last row on the opposite end of the board from where it<br> 
+started then that Pawn as part of its move may be promoted into a Queen, Rook, Knight, or Bishop of<br> 
+the same color. There is no restriction on which piece the Pawn can be promoted to so it is possible<br> 
+to have 2 Queens, 3 Rooks, etc...<br>
+Once a Pawn reaches the end of the board the moving player will be presented with a menu prompting<br> 
+them to select their promotion piece.<br>
+</p>
+
+<br>
+
+<h3><u>Castling</u></h3>
+
+<p>
+Once per game the King is allowed to Castle, moving 2 squares towards a Rook on the same row<br> 
+and moving that Rook to the last square the King passed over. Castling is permissible under the<br> 
+following conditions:
+</p>
+<ul>
+<li>Neither the Rook or King have moved previously during the game.</li>
+<li>There are no pieces between the Castling King and Rook.</li>
+<li>The King is not in Check, does not pass through any squares under attack by enemy pieces,<br> 
+and doesn't land in Check.</li>
+</ul> 
+<p>
+Castling is permissible however if the Rook is under attack or passes through a square under attack.<br> 
+To Castle, select the King and click the square 2 spaces away on the same row in either direction.<br>
+</p>
+
+<br>
+<br>
+
+</body>
+
+</html>
