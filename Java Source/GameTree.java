@@ -236,10 +236,13 @@ public class GameTree {
 
 		System.gc();
 
-
+	//The generateGameTree method uses non-parallel construction of game trees
 	//	generateGameTree(head, 16, 2);
+	//Invoke the TreeGenerator Recursive task to build the tree in parallel	
 		mainPool.invoke(new TreeGenerator(true, Arrays.copyOfRange(pieces, 16, 32), 3));
-
+	
+	//Invoke the TreeSearcher Recursive task to search the tree in parallel
+	//Use the alphaBetaSearch method on its own to search the tree iteratively, that is non-parallel	
 	//	alphaBetaSearch(head, true, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
 		mainPool.invoke(new TreeSearcher(head, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false));
 		
