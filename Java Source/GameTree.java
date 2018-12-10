@@ -237,8 +237,8 @@ public class GameTree {
 	//	generateGameTree(head, 16, 2);
 		mainPool.invoke(new TreeGenerator(true, Arrays.copyOfRange(pieces, 16, 32), 3));
 
-	//	alphaBetaSearch(head, true, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
-		mainPool.invoke(new TreeSearcher(head, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false));
+		alphaBetaSearch(head, true, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
+	//	mainPool.invoke(new TreeSearcher(head, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false));
 		
 		GameState max = head.getChild(0);
 

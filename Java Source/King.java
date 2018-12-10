@@ -148,6 +148,7 @@ public class King extends Piece {
 		for (int i=0; i<8; i++) {
 			if (moves[i+1] == -1)
 				continue;
+					
 
 			P = B.getPosition(I+mods[i]);
 			if (P == -1 || (I == 15 && P > 15) || (I == 31 && P < 16))

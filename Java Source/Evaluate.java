@@ -98,22 +98,27 @@ public class Evaluate {
 		int[] BMoves;
 		int[] WMoves;
 
-		//Look for potential captures
-		for (int B=0; B<16; B++) {
-			BMoves = P[B+16].move(layout);
-			WMoves = P[B].move(layout);
+		//Look for potential captures, doesn't include kings for now
+		for (int B=0; B<15; B++) {
 
-			for (int BM : BMoves) {
-				if (BM != -1 && layout.getPosition(BM) > 15)
-					System.out.println(B);
+			if (layout.getPiecePos(B+16) != -1) {
+				BMoves = P[B+16].move(layout);
 
-				if (BM != -1 && layout.getPosition(BM) != -1)
-					eval += P_VALS[layout.getPosition(BM)];
+				for (int BM : BMoves) {
+					if (BM != -1 && layout.getPosition(BM) > 15)
+						System.out.println(B);
+
+					if (BM != -1 && layout.getPosition(BM) != -1)
+						eval += P_VALS[layout.getPosition(BM)];
+				}	
 			}		
-				
-			for (int WM : WMoves)
-				if (WM != -1 && layout.getPosition(WM) != -1)
-					eval -= P_VALS[layout.getPosition(WM)%16];			
+			
+			if (layout.getPiecePos(B) != -1) {
+				WMoves = P[B].move(layout);
+				for (int WM : WMoves)
+					if (WM != -1 && layout.getPosition(WM) != -1)
+						eval -= P_VALS[layout.getPosition(WM)%16];	
+			}					
 		}
 
 
