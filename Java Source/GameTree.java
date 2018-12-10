@@ -40,6 +40,7 @@ public class GameTree {
 			this.limit = l;
 		}
 
+
 		protected void compute() {
 			if (init) {
 				invokeAll(new TreeGenerator(false, Arrays.copyOfRange(targets, 0, 4), limit),
@@ -48,7 +49,6 @@ public class GameTree {
 						  new TreeGenerator(false, Arrays.copyOfRange(targets, 12, 16), limit));
 			} else {
 				BitBoard start = head.getBoard();
-				int j =0;
 				for (Piece P1 : targets) {
 					if (start.getPiecePos(P1.getID()) != -1) {
 						for (int M : P1.move(start)) {
@@ -57,13 +57,11 @@ public class GameTree {
 								if (!temp.examine(31, pieces)) { 	
 									GameState child = new GameState(temp, 1, P1.getID(), M); 
 									head.setChild(child);
-									if (child.getDepth() < limit) {
-										treeDepth = child.getDepth();
-										generateGameTree(child, 0, limit);
-									}	
+									treeDepth = child.getDepth();
+									if (child.getDepth() < limit) 
+										generateGameTree(child, 0, limit);		
 								}
 							}
-							j++;
 						}
 					}
 				}
@@ -179,10 +177,9 @@ public class GameTree {
 						if (turn != 16 || !temp.examine(31, pieces)) { 	//CPU does not consider moves which put it into check
 							GameState child = new GameState(temp, start.getDepth()+1, i, M[j]); 
 							start.setChild(child);
-							if (child.getDepth() < limit) {
-								treeDepth = child.getDepth();
-								generateGameTree(child, (turn+16)%32, limit);
-							}	
+							treeDepth = child.getDepth();
+							if (child.getDepth() < limit) 
+								generateGameTree(child, (turn+16)%32, limit);		
 						}
 					}	
 				}
@@ -236,13 +233,10 @@ public class GameTree {
 
 		System.gc();
 
-	//The generateGameTree method uses non-parallel construction of game trees
+
 	//	generateGameTree(head, 16, 2);
-	//Invoke the TreeGenerator Recursive task to build the tree in parallel	
 		mainPool.invoke(new TreeGenerator(true, Arrays.copyOfRange(pieces, 16, 32), 3));
-	
-	//Invoke the TreeSearcher Recursive task to search the tree in parallel
-	//Use the alphaBetaSearch method on its own to search the tree iteratively, that is non-parallel	
+
 	//	alphaBetaSearch(head, true, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
 		mainPool.invoke(new TreeSearcher(head, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false));
 		
