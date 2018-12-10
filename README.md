@@ -16,5 +16,8 @@ The files making up the core of the PChess playing program are:
 </ul>
 
 <br>
+<b>Important: At this point in time the evaluation function is still incredibly simple and prone to substantive future alteration. As such the playing ability of PChess is below that of an infant.</b>
+
+<br>
 Additional future work in improving and documenting the program is planned. 
 </p>  
