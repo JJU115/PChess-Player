@@ -156,6 +156,7 @@ public class King extends Piece {
 			else
 				moves[i+1] = -1;	
 		}	
+		
 
 		//Check Castling requirments
 		if (!B.getPStatus(getID())) {

@@ -31,7 +31,7 @@ public class BitBoard {
         if (specs == null)        
             special = new boolean[22];   
         else
-            special = specs;         
+            special = specs;          
                  
     }
 
@@ -118,6 +118,28 @@ public class BitBoard {
 
     }
 
+
+    //Look over board for changes in white pieces that warrant change to special array 
+    public void updateBoardScan() {
+        //White pawns
+        for (int i=0; i<8; i++) {
+            if (getPiecePos(i) != 48 + i)
+                this.special[i] = true;
+        }
+
+        //White rooks
+        if (getPiecePos(8) != 56)
+            this.special[8] = true;
+
+        if (getPiecePos(9) != 63)
+            this.special[9] = true;    
+
+        //White king
+        if (getPiecePos(15) != 60)
+            this.special[10] = true;
+    }
+
+
     //Examine this BitBoard to see if king with given param ID in check
     public boolean examine(int king, Piece[] P) {
         int[] M;
@@ -148,23 +170,14 @@ public class BitBoard {
         Chessboard C = new Chessboard();
         C.setPieces();
         BitBoard B = new BitBoard(C,null);
-        BitBoard B2 = new BitBoard(B,26,28);
-        BitBoard B3 = new BitBoard(B2,13,36);
+        BitBoard B2 = new BitBoard(B,6,38);
+        BitBoard B3 = new BitBoard(B2,15,44);
 
         
 
-        System.out.println(Arrays.toString(C.fetchPiece(26).move(B2)));
-        for (int i=0; i<8; i++) {
-            for (int j=0; j<8; j++)
-                System.out.print(B2.getPosition(i*8+j) + " ");
-            System.out.println();
-        }    
-        System.out.println("\n\n");    
-        for (int i=0; i<8; i++) {
-            for (int j=0; j<8; j++)
-                System.out.print(B3.getPosition(i*8+j) + " ");
-            System.out.println();
-        }
+        System.out.println(Arrays.toString(B3.getSpecs()));
+        B3.printout();   
+        
     }
     
 }

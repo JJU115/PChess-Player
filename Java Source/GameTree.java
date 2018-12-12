@@ -167,6 +167,7 @@ public class GameTree {
 	public void generateGameTree(GameState start, int turn, int limit) {
 		int[] M;
 		BitBoard curr = start.getBoard();
+	//	System.out.println(Arrays.toString(curr.getSpecs()));
 		
 		for (int i=turn; i<turn+16; i++) {
 			if (curr.getPiecePos(i) != -1) {
@@ -226,16 +227,22 @@ public class GameTree {
 
 	public int[] getNextMove(Chessboard C) {
 
-		if (last == null)
-			head = new GameState(new BitBoard(C,null), 0, -1, -1);
-		else
+		//Need to put in update to Bitboard special array here for white pieces
+		if (last == null) {
+			BitBoard B = new BitBoard(C, null);
+			B.updateBoardScan();
+			head = new GameState(new BitBoard(C,null), 0, -1, -1);	
+		} else {
+			BitBoard B = new BitBoard(C, last);
+			B.updateBoardScan();
 			head = new GameState(new BitBoard(C, last), 0, -1, -1);	
+		}	
 
 		System.gc();
 
 
-	//	generateGameTree(head, 16, 2);
-		mainPool.invoke(new TreeGenerator(true, Arrays.copyOfRange(pieces, 16, 32), 3));
+		generateGameTree(head, 16, 1);
+	//	mainPool.invoke(new TreeGenerator(true, Arrays.copyOfRange(pieces, 16, 32), 3));
 
 		alphaBetaSearch(head, true, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
 	//	mainPool.invoke(new TreeSearcher(head, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false));
