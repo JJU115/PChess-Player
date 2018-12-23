@@ -112,6 +112,16 @@ public class GameTree {
 					TS.add(new TreeSearcher(top.getChild(i), alpha, beta, true));
 				
 				invokeAll(TS);
+				
+				if (top.getDepth()%2 == 0) {
+					for (GameState G : top.getChildren())
+						if (top.getEval() < G.getEval())
+							top.setEval(G.getEval());
+				} else {
+					for (GameState G : top.getChildren())
+						if (top.getEval() > G.getEval())
+							top.setEval(G.getEval());
+				}	
 			}
 		}
 
