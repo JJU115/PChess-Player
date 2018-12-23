@@ -42,7 +42,7 @@ public class GameTree {
 
 
 		protected void compute() {
-			if (init) {
+			if (init) {	
 				invokeAll(new TreeGenerator(false, Arrays.copyOfRange(targets, 0, 4), limit),
 						  new TreeGenerator(false, Arrays.copyOfRange(targets, 4, 8), limit),	
 						  new TreeGenerator(false, Arrays.copyOfRange(targets, 8, 12), limit),
@@ -121,7 +121,7 @@ public class GameTree {
 					for (GameState G : top.getChildren())
 						if (top.getEval() > G.getEval())
 							top.setEval(G.getEval());
-				}	
+				}		
 			}
 		}
 
@@ -250,12 +250,11 @@ public class GameTree {
 
 		System.gc();
 
+	//	generateGameTree(head, 16, 1);
+		mainPool.invoke(new TreeGenerator(true, Arrays.copyOfRange(pieces, 16, 32), 3));
 
-		generateGameTree(head, 16, 1);
-	//	mainPool.invoke(new TreeGenerator(true, Arrays.copyOfRange(pieces, 16, 32), 3));
-
-		alphaBetaSearch(head, true, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
-	//	mainPool.invoke(new TreeSearcher(head, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false));
+	//	alphaBetaSearch(head, true, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
+		mainPool.invoke(new TreeSearcher(head, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, false));
 		
 		GameState max = head.getChild(0);
 

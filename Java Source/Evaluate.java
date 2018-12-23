@@ -99,7 +99,7 @@ public class Evaluate {
 		int[] WMoves;
 
 		//Look for potential captures, doesn't include kings for now
-		for (int B=0; B<15; B++) {
+		for (int B=0; B<16; B++) {
 
 			if (layout.getPiecePos(B+16) != -1) {
 				BMoves = P[B+16].move(layout);
