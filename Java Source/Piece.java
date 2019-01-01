@@ -1,7 +1,7 @@
 /*
 *	Piece.java
 *	Date of creation: April 25, 2018
-*	Date of last modification: Nov 6, 2018
+*	Date of last modification: Dec 19, 2018
 *	
 *	Author: Justin Underhay
 *	
@@ -167,6 +167,11 @@ public class Piece {
 
 
 	public int[] move(BitBoard B) {
+		return null;
+	}
+
+
+	public int[] move(BitMap B) {
 		return null;
 	}
 }	

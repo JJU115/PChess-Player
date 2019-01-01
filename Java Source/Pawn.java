@@ -154,7 +154,7 @@ public class Pawn extends Piece {
 
 
 
-	public int[] move(BitBoard B) {
+	public int[] move(BitMap B) {
 
 		int[] moves = new int[4];
 		int I = B.getPiecePos(getID());

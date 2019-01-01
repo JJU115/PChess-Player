@@ -59,7 +59,7 @@ public class Queen extends Piece {
 
 
 
-	public int[] move(BitBoard B) {
+	public int[] move(BitMap B) {
 
 		int[] M1 = (new Rook(getColor(),'R',getID())).move(B);
 		int[] M2 = (new Bishop(getColor(),'B',getID())).move(B);

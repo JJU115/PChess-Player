@@ -2,13 +2,27 @@
 	Evaluate.java
 
 	Date of Creation: Dec 3, 2018
-	Date of last modification: Dec 5, 2018
+	Date of last modification: Dec 19, 2018
 	
 	Author: Justin Underhay
 */
 
+/*
+	Evaluate.java is the class responsible for calculating static evaluation values for board positions.
+	The single instance method, evaluateState, calculates the value for a given BitMap based on a variety
+	of factors such as captured pieces, piece positions, and potential to make captures.
+
+	A number of changes are to be made, including an opening move database and improvements to the
+	evaluation function to create a stronger playing program.
+
+	Data members:
+		P - Piece[] 	- An array of Piece objects to generate moves for given BitMaps.
+*/
+
 
 public class Evaluate {
+
+	//The following static values are the Piece values and positioning tables used to calculate board values 
 
 	private static final double[] P_VALS = {2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 12.7, 12.7, 8.1, 8.1, 8.3, 8.3, 19.4, 500};
 
@@ -57,7 +71,7 @@ public class Evaluate {
 													{-10,  0,  0,  0,  0,  0,  0,-10},
 													{-20,-10,-10, -5, -5,-10,-10,-20}};
 
-	private static final double[][] KING_VALS = {   {20, 30, 10,  0,  0, 10, 30, 20},
+	private static final double[][] KING_VALS = {   {20, 50, 10,  0,  0, 10, 50, 20},
 													{20, 20,  0,  0,  0,  0, 20, 20},
 													{-10,-20,-20,-20,-20,-20,-20,-10},
 													{-20,-30,-30,-40,-40,-30,-30,-20},
@@ -76,7 +90,13 @@ public class Evaluate {
     }
 
 
-    public double evaluateState(BitBoard layout) {
+	/*
+		evaluateState(BitMap layout) - With the given BitMap layout calculate a static evaluation value
+		based on a variety of factors. The returned value is a decimal, positive or negative, assigned to
+		a GameState and placed within the GameTree. Higher values represent more advantageous layouts for
+		the computer, lower values represent a better layout for the human player. 
+	*/
+    public double evaluateState(BitMap layout) {
 
         double eval = 0.0;
 		int[] BpiecePositions = new int[16];
@@ -98,7 +118,7 @@ public class Evaluate {
 		int[] BMoves;
 		int[] WMoves;
 
-		//Look for potential captures, doesn't include kings for now
+		//Look for potential captures
 		for (int B=0; B<16; B++) {
 
 			if (layout.getPiecePos(B+16) != -1) {

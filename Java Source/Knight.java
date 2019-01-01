@@ -82,7 +82,7 @@ public class Knight extends Piece {
 
 
 
-	public int[] move(BitBoard B) {
+	public int[] move(BitMap B) {
 
 		int[] moves = new int[9];
 		int I = B.getPiecePos(getID());

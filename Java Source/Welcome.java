@@ -44,8 +44,8 @@ public class Welcome extends DisplayScreen {
 		//Declare and initialize objects
 		JLabel RIcon = new JLabel(new ImageIcon("Supplemental\\B-Knight.png"));
 		JLabel LIcon = new JLabel(new ImageIcon("Supplemental\\W-Bishop.png"));
-		JLabel version = new JLabel("Version 1.210");
-		JLabel supp = new JLabel("Author: J.J.U    Date of last modification: 2018-11-07");
+		JLabel version = new JLabel("Version 1.230");
+		JLabel supp = new JLabel("Author: J.J.U    Date of last modification: 2018-12-22");
 		JLabel title = new JLabel("Welcome to Java Chess!");
 		JButton[] buttons = new JButton[3];
 		String[] names = {"Play!","Help","Quit"};	

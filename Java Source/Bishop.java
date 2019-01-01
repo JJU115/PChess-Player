@@ -93,7 +93,7 @@ public class Bishop extends Piece {
 
 
 
-	public int[] move(BitBoard B) {
+	public int[] move(BitMap B) {
 
 		int[] preCheck = new int[14];
 		int I = B.getPiecePos(getID());

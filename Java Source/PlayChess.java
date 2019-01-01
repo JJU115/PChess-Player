@@ -1,7 +1,7 @@
 /*
 *	PlayChess.java
 *	Date of creation: June 10, 2018
-*	Date of last modification: Nov 7, 2018
+*	Date of last modification: Dec 22, 2018
 *	
 *	Author: Justin Underhay
 *	
@@ -13,9 +13,6 @@
 	The main method consists of one big loop which alternates between players enforcing valid moves and the rules.
 	Check, Checkmate, Stalemate, and promotion are handled in outside static methods.
 	The end of execution of the main method signifies the game has ended for one of several reasons whereby the program exits.
-	
-	NOV 7, 2018 UPDATE: Changes to allow play against a computer player program have been made. Not fully complete yet, will 
-	continue to change.
 */
 
 
@@ -37,11 +34,8 @@ import java.lang.Math;
 
 public class PlayChess {
 	
-	
-	
 	public static void main(String[] args) {
-		
-		
+
 		//Welcome, Help, DisplayScreen object instantiation
 		Welcome page1 = new Welcome();
 		Help page2 = new Help();
@@ -61,7 +55,7 @@ public class PlayChess {
 		//Initialize Help page JFrame and set its properties
 		JFrame hPage = new JFrame("Help");
 		hPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		hPage.setSize(new Dimension(900, 700));
+		hPage.setSize(new Dimension(920, 700));
 		hPage.setResizable(false);
 		hPage.add(page2.getScrollPane());
 		
@@ -104,16 +98,13 @@ public class PlayChess {
 			System.out.println("Unexpected error, quitting application...");
 			System.exit(-1);
 		}	
-	
-		
-		hPage.dispose();
-		wPage.dispose();
 		
 		
 		//Initialize JComponents
 		JFrame GUI = new JFrame("Java Chess");
 		JLabel pTurn = new JLabel("White's Turn");
 		JLabel pSelect = new JLabel();
+		JLabel timer = new JLabel("0:00:00");
 		JButton quitButton = new JButton("Quit");
 		
 		
@@ -132,12 +123,15 @@ public class PlayChess {
 		pTurn.setBorder(new CompoundBorder(pTurn.getBorder(), new EmptyBorder(10,10,10,10)));
 		pSelect.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		pSelect.setBorder(new CompoundBorder(pSelect.getBorder(), new EmptyBorder(10,10,10,10)));
+		timer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		timer.setBorder(new CompoundBorder(timer.getBorder(), new EmptyBorder(10,10,10,10)));
 		
 		
 		//Size and font
 		pSelect.setPreferredSize(new Dimension(135,135));
 		quitButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		pTurn.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+		timer.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		
 		
 		//Set GUI properties
@@ -156,6 +150,7 @@ public class PlayChess {
 		GUI.add(board.getBoard());
 		GUI.add(pTurn);
 		GUI.add(pSelect);
+		GUI.add(timer);
 		GUI.add(quitButton);
 		
 		
@@ -166,6 +161,19 @@ public class PlayChess {
 		Slayout.putConstraint("North", pSelect, 10, "South", pTurn);
 		Slayout.putConstraint("West", quitButton, 40, "East", board.getBoard());
 		Slayout.putConstraint("North", quitButton, 950, "North", GUI);
+		Slayout.putConstraint("West", timer, 45, "East", board.getBoard());
+		Slayout.putConstraint("North", timer, 10, "South", pSelect);
+
+
+		//Give option to play against CPU
+		boolean playCPU = (JOptionPane.showConfirmDialog(null, "Would you like to play against the computer? (Computer always plays Black)") == JOptionPane.YES_OPTION) ? true : false;
+
+		hPage.dispose();
+		wPage.dispose();
+
+		//Initialize the timer
+		TimerThread clock = new TimerThread(timer);
+		clock.start();
 
 		GUI.setVisible(true);
 		
@@ -182,6 +190,7 @@ public class PlayChess {
 		int[] CPUMove = new int[2];
 		
 		
+		
 		/*
 			Main play loop. As long as neither player lands in checkmate or a stalemate has occurred play will continue 
 			within this loop. First, all tiles containing pieces of the current player's turn are scanned to see if any
@@ -196,7 +205,7 @@ public class PlayChess {
 		while (!checkMate && !staleMate) {
 			turnNum++;
 
-			if (turnNum % 2 != 0) {
+			if (turnNum % 2 != 0 || !playCPU) {
 			
 				//1st loop: wait for player to click tile with piece on it
 				while (!act2) {
@@ -287,7 +296,7 @@ public class PlayChess {
 			} else {
 				CPUMove = CPU.getNextMove(board);
 				Q = board.fetchTileOfPiece(CPUMove[0]);
-				P = board.fetchTile(CPUMove[1]);
+				P = board.fetchTile(CPUMove[1]);			
 			}	
 			
 			

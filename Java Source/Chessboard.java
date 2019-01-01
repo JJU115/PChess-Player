@@ -64,36 +64,6 @@ public class Chessboard {
 			}
 		}	
 	}
-
-
-	/*
-		Additional constructor taking a Chessboard object and 2 integers as arguments.
-		The 2 integers are: the ID of a Piece and a Tile ID.
-		Copies the given Chessboard and changes it to reflect a move from the Piece to the Tile.
-		This constructor's main purpose is for use in the GameTree class.
-	*/
-	public Chessboard(Chessboard C, int P, int M) {
-		
-		tiles = new Tile[8][8];
-		
-		for (int i=0; i<8; i++) 
-			for (int j=0; j<8; j++)	
-				tiles[i][j] = new Tile(C.fetchTile(i*8+j));
-			
-		pieceList = Arrays.copyOf(C.getList(), 32);	
-		
-		fetchTile(M).setPiece(fetchPiece(P));
-		fetchTileOfPiece(P).setPiece(null);
-		
-		for (int k=0; k<32; k++) {
-			if (pieceList[k] == M) {
-				pieceList[k] = -1;
-				break;
-			}	
-		}
-		
-		pieceList[P] = M;						
-	}
 	
 	
 	/*

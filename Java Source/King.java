@@ -1,7 +1,7 @@
 /*
 *	King.java
 *	Date of creation: May 20, 2018
-*	Date of last modification: Nov 4, 2018
+*	Date of last modification: Dec 19, 2018
 *	
 *	Author: Justin Underhay
 *	
@@ -125,7 +125,7 @@ public class King extends Piece {
 
 
 
-	public int[] move(BitBoard B) {
+	public int[] move(BitMap B) {
 
 		int[] moves = new int[11];
 		int I = B.getPiecePos(getID());
@@ -149,9 +149,8 @@ public class King extends Piece {
 			if (moves[i+1] == -1)
 				continue;
 					
-
 			P = B.getPosition(I+mods[i]);
-			if (P == -1 || (I == 15 && P > 15) || (I == 31 && P < 16))
+			if (P == -1 || (getID() == 15 && P > 15) || (getID() == 31 && P < 16))
 				moves[i+1] = I+mods[i];
 			else
 				moves[i+1] = -1;	
@@ -180,5 +179,7 @@ public class King extends Piece {
 		return moves;
 
 	}
+
+
 
 }	
