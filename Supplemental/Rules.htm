@@ -21,7 +21,7 @@
 
 <p>
 This program is a game of Chess coded in the Java language. It features a fully interactable GUI to allow play<br>
-between two people. Improvements/additions are being made on a regular basis to enhance the user experience.<br> 
+between two people or between the user and the computer. Further improvements and updates are planned.<br> 
 This page offers a rudimentary background and explains the rules of the game. Click the 'Back' button if you<br>
 wish to return to the Welcome screen or the 'Play' button if you wish to begin a new game, both are located<br>
 at the bottom of this screen.<br>   
@@ -39,7 +39,7 @@ which displays the chess board and pieces. The label in the top right of the scr
 current player's turn (White or Black) and the label directly below will display the current player's<br>
 piece selection, if the label is blank then no piece has been selected. The current player can select<br>
 the piece they wish to move by clicking on it, if it appears in the piece selection label then the<br>
-selection has been registered.<br>
+selection has been registered. The GUI also features a timer directly below the piece selection label.<br>
 <br>
 With a selected piece, the current player may move it by clicking on the square of the board they<br>
 wish to move it to. If the move is valid then the piece will be relocated to that square and <br>
@@ -51,6 +51,36 @@ Play will continue until one of three conditions is met discussed in the next se
 The player controlling white pieces always has the first move and each player must on their turn make a<br>
 valid move until play ends.<br>
 Any move which puts a player's King in danger is deemed illegal.<br>
+</p>
+
+<br>
+<br>
+
+<h2><u>Playing Against the Computer</u></h2>
+
+<p>
+Upon clicking the 'Play!' button you will be asked whether or not to play against the computer.<br>
+If you select not to then a normal game between two users will commence otherwise the automated playing<br>
+program will be initialized. Currently any user that selects to do this must play the white pieces, the computer<br>
+will play black, this is subject to future change. The playing program uses a game tree generation algorithm with<br>
+alpha-beta pruning search utilizing parallel executing thread pools to make its moves. Without modification <br>
+the program looks four moves ahead. <br>
+</p>
+
+<br>
+<br>
+
+<h2><u>Modifying the Computer Player</u></h2>
+
+<p>
+As the code is open source it may be modified, this includes the depth of the program's game tree, the number of<br> 
+moves ahead it looks, which can be changed from its default value of four. A value less than four will result in an <br>
+easier to beat program, however it is important to note that the program's routines for evaulating board<br> 
+positions have signficant influence. At depths above four the time delay to make moves increases exponentially<br>
+with an average of twenty seconds per move at depth five. At depth six the delay is above one minute per move<br> 
+assuming the JVM doesn't throw an OutOfMemory exception and crash the program before the move is made. If<br> 
+this does occur it may be circumvented by allocating the JVM a greater maximum heap size at execution time.<br>
+All of these parameters vary depending on the machine the program is run on, keep this is mind.<br>
 </p>
 
 <br>
