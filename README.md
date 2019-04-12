@@ -21,3 +21,9 @@ The files making up the core of the PChess playing program are:
 <br>
 Additional future work in improving the program such as extending the evaluation function is planned. 
 </p>  
+
+<h2>Notes on Display Resolution</h2>
+<p>
+  The largest screen of this program is 1180 x 1050 pixels. It assumes 1920*1080 resolution with 100% scaling, anything else may display components incorrectly.
+  </p>
+  
