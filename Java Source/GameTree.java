@@ -32,7 +32,6 @@ import java.lang.Double;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
@@ -50,6 +49,7 @@ public class GameTree {
 		portions of the tree that extend the nodes given to it by using the generateGameTree method. 
 	*/
 	class TreeGenerator extends RecursiveAction {
+		private static final long serialVersionUID = 1L;
 		private boolean init;
 		private int limit;
 		private List<GameState> nodes;
@@ -133,6 +133,7 @@ public class GameTree {
 		in a parallel search of all remaining subtrees using one worker thread per subtree. 
 	*/
 	class TreeSearcher extends RecursiveAction {
+		private static final long serialVersionUID = 1L;
 		private GameState top;
 		private double alpha, beta;
 		private boolean search;

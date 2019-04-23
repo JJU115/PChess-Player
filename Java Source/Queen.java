@@ -44,8 +44,6 @@ public class Queen extends Piece {
 	public int[] move(Chessboard cBoard) {
 		//The Queen's valid moves can be obtained by creating a Rook and Bishop and calling their respective move methods. 
 		
-		Tile T = cBoard.fetchTileOfPiece(getID());
-		
 		int[] M1 = (new Rook(getColor(),'R',getID())).move(cBoard);
 		int[] M2 = (new Bishop(getColor(),'B',getID())).move(cBoard);
 		

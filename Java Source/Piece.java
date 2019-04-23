@@ -166,11 +166,6 @@ public class Piece {
 	}		
 
 
-	public int[] move(BitBoard B) {
-		return null;
-	}
-
-
 	public int[] move(BitMap B) {
 		return null;
 	}

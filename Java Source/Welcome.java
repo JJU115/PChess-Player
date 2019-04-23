@@ -19,7 +19,6 @@
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.SpringLayout;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;

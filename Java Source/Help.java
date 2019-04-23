@@ -91,6 +91,7 @@ public class Help extends DisplayScreen {
 			Scanner getRules = new Scanner(new File("Supplemental\\Rules.htm"));
 			while (getRules.hasNext()) 
 				rules.setText(rules.getText() + getRules.nextLine());	
+			getRules.close();
 			
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Cannot find the rules file: Rules.htm. Check Supplemental directory");
