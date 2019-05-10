@@ -88,7 +88,7 @@ public class Help extends DisplayScreen {
 		JLabel rules = new JLabel();
 		
 		try {
-			Scanner getRules = new Scanner(new File("Supplemental\\Rules.htm"));
+			Scanner getRules = new Scanner(new File("./Supplemental/Rules.htm"));
 			while (getRules.hasNext()) 
 				rules.setText(rules.getText() + getRules.nextLine());	
 			getRules.close();
