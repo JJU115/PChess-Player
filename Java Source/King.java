@@ -26,11 +26,17 @@ public class King extends Piece {
 	private boolean firstMove;
 	
 	public King(char pieceColor, char pieceType, int ID) {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+			
 		
 		if (pieceColor == 'W')
-			setImage(new ImageIcon("Supplemental\\W-King.png"));
+			setImage(new ImageIcon(path + "W-King.png"));
 		else
-			setImage(new ImageIcon("Supplemental\\B-King.png"));
+			setImage(new ImageIcon(path + "B-King.png"));
 		
 		setColor(pieceColor);
 		setType(pieceType);

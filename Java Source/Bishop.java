@@ -18,11 +18,17 @@ import javax.swing.ImageIcon;
 public class Bishop extends Piece {
 	
 	public Bishop(char pieceColor, char pieceType, int ID) {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+
 		
 		if (pieceColor == 'W')
-			setImage(new ImageIcon("Supplemental\\W-Bishop.png"));
+			setImage(new ImageIcon(path + "W-Bishop.png"));
 		else
-			setImage(new ImageIcon("Supplemental\\B-Bishop.png"));
+			setImage(new ImageIcon(path + "B-Bishop.png"));
 		
 		setColor(pieceColor);
 		setType(pieceType);

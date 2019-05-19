@@ -27,11 +27,17 @@ public class Rook extends Piece {
 	private boolean firstMove;
 	
 	public Rook(char pieceColor, char pieceType, int ID) {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+
 		
 		if (pieceColor == 'W')
-			setImage(new ImageIcon("Supplemental\\W-Rook.png"));
+			setImage(new ImageIcon(path + "W-Rook.png"));
 		else
-			setImage(new ImageIcon("Supplemental\\B-Rook.png"));
+			setImage(new ImageIcon(path + "B-Rook.png"));
 		
 		setColor(pieceColor);
 		setType(pieceType);

@@ -23,11 +23,17 @@ public class Queen extends Piece {
 	
 	
 	public Queen(char pieceColor, char pieceType, int ID) {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+
 		
 		if (pieceColor == 'W')
-			setImage(new ImageIcon("Supplemental\\W-Queen.png"));
+			setImage(new ImageIcon(path + "W-Queen.png"));
 		else
-			setImage(new ImageIcon("Supplemental\\B-Queen.png"));
+			setImage(new ImageIcon(path + "B-Queen.png"));
 		
 		setColor(pieceColor);
 		setType(pieceType);

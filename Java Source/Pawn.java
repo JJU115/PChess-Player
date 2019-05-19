@@ -29,11 +29,17 @@ public class Pawn extends Piece {
 
 	
 	public Pawn(char pieceColor, char pieceType, int ID) {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+
 		
 		if (pieceColor == 'W')
-			setImage(new ImageIcon("Supplemental\\W-Pawn.png"));
+			setImage(new ImageIcon(path + "W-Pawn.png"));
 		else
-			setImage(new ImageIcon("Supplemental\\B-Pawn.png"));
+			setImage(new ImageIcon(path + "B-Pawn.png"));
 		
 		setColor(pieceColor);
 		setType(pieceType);

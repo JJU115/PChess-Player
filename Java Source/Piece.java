@@ -29,7 +29,9 @@ public class Piece {
 	private char type;
 	private int pieceID;
 	private boolean captured;
-	private ImageIcon image;	
+	private ImageIcon image;
+	protected static final String osName = System.getProperty("os.name").toLowerCase();
+	protected String path; 	
 	
 	
 	/*

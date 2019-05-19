@@ -33,6 +33,12 @@ public class Welcome extends DisplayScreen {
 	
 	
 	public Welcome() {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+
 		
 		selectionChoice = "";
 		
@@ -41,10 +47,10 @@ public class Welcome extends DisplayScreen {
 		screen = new JPanel(SLayout);
 		
 		//Declare and initialize objects
-		JLabel RIcon = new JLabel(new ImageIcon("Supplemental\\B-Knight.png"));
-		JLabel LIcon = new JLabel(new ImageIcon("Supplemental\\W-Bishop.png"));
+		JLabel RIcon = new JLabel(new ImageIcon(path + "B-Knight.png"));
+		JLabel LIcon = new JLabel(new ImageIcon(path + "W-Bishop.png"));
 		JLabel version = new JLabel("Version 1.230");
-		JLabel supp = new JLabel("Author: J.J.U    Date of last modification: 2018-12-22");
+		JLabel supp = new JLabel("Author: J.J.U    Date of last modification: 2019-05-19");
 		JLabel title = new JLabel("Welcome to Java Chess!");
 		JButton[] buttons = new JButton[3];
 		String[] names = {"Play!","Help","Quit"};	

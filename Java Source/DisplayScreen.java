@@ -29,6 +29,8 @@ public class DisplayScreen implements ActionListener {
 	
 	protected JPanel screen;
 	protected String selectionChoice;
+	protected String osName = System.getProperty("os.name").toLowerCase();
+	protected String path;
 
 
 	/*

@@ -19,11 +19,17 @@ import javax.swing.ImageIcon;
 public class Knight extends Piece {
 	
 	public Knight(char pieceColor, char pieceType, int ID) {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+
 		
 		if (pieceColor == 'W')
-			setImage(new ImageIcon("Supplemental\\W-Knight.png"));
+			setImage(new ImageIcon(path + "W-Knight.png"));
 		else
-			setImage(new ImageIcon("Supplemental\\B-Knight.png"));
+			setImage(new ImageIcon(path + "B-Knight.png"));
 		
 		setColor(pieceColor);
 		setType(pieceType);

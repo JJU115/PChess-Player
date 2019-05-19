@@ -39,6 +39,12 @@ public class Help extends DisplayScreen {
 	
 	
 	public Help() {
+
+		if (osName == "windows")
+			path = "Supplemental\\";
+		else
+			path = "./Supplemental/";
+
 		
 		selectionChoice = "";
 		
@@ -88,7 +94,7 @@ public class Help extends DisplayScreen {
 		JLabel rules = new JLabel();
 		
 		try {
-			Scanner getRules = new Scanner(new File("./Supplemental/Rules.htm"));
+			Scanner getRules = new Scanner(new File(path + "Rules.htm"));
 			while (getRules.hasNext()) 
 				rules.setText(rules.getText() + getRules.nextLine());	
 			getRules.close();

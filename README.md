@@ -22,11 +22,6 @@ The files making up the core of the PChess playing program are:
 Additional future work in improving the program such as extending the evaluation function is planned. 
 </p>  
 
-<h2>Usage on Linux</h2>
-<p>
-File path specifiers in PChess files use the backwards slash '\' to find images and lay out certain visual components, on Linux this will not work and should be changed to use the forward slash '/'
-instead.
-</p>
 
 <h2>Notes on Display Resolution</h2>
 <p>
